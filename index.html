@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="رسالة من القلب">
+<meta property="og:title" content="رسالة خاصة لك">
+<meta property="og:type" content="website">
+<title>رسالة اعتذار لفطومتي</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+    * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: 'Tajawal', sans-serif;
+        background: linear-gradient(-45deg, #ff758c, #ff7eb3, #ffb199, #ffdde1);
+        background-size: 400% 400%;
+        animation: gradientBG 10s ease infinite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        min-height: 100dvh;
+        overflow: hidden;
+        color: #4a0e27;
+    }
+
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .bg-particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    .particle {
+        position: absolute;
+        bottom: -20px;
+        color: rgba(255, 255, 255, 0.4);
+        animation: rise linear infinite;
+    }
+
+    @keyframes rise {
+        0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0; }
+        20% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { transform: translateY(-100vh) rotate(360deg) scale(1.5); opacity: 0; }
+    }
+
+    .container {
+        width: 90%;
+        max-width: 400px;
+        padding: 15px;
+        position: relative;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slide {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-radius: 40px;
+        padding: 40px 20px;
+        box-shadow: 0 20px 40px rgba(255, 117, 140, 0.2), inset 0 0 0 2px rgba(255,255,255,0.8);
+        width: 100%;
+        text-align: center;
+    }
+
+    .slide.active {
+        display: flex;
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    .image-container {
+        position: relative;
+        margin-bottom: 25px;
+        width: 100%;
+        max-width: 240px;
+        animation: floatImage 4s ease-in-out infinite;
+    }
+
+    @keyframes floatImage {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        max-height: 250px;
+        border-radius: 30px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        border: 4px solid #fff;
+        object-fit: cover;
+    }
+
+    p {
+        font-size: 1.35rem;
+        line-height: 1.5;
+        margin-bottom: 30px;
+        font-weight: 700;
+        color: #4a0e27;
+        padding: 0 10px;
+    }
+
+    .highlight {
+        color: #ff0844;
+        font-weight: 800;
+        font-size: 1.45rem;
+        display: inline-block;
+        animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        15% { transform: scale(1.1); }
+        30% { transform: scale(1); }
+        45% { transform: scale(1.1); }
+        60% { transform: scale(1); }
+        100% { transform: scale(1); }
+    }
+
+    button.primary-btn {
+        background: linear-gradient(135deg, #ff0844, #ffb199);
+        color: white;
+        border: none;
+        padding: 16px 35px;
+        font-size: 1.25rem;
+        border-radius: 50px;
+        cursor: pointer;
+        font-family: 'Tajawal', sans-serif;
+        font-weight: 800;
+        box-shadow: 0 10px 25px rgba(255, 8, 68, 0.4);
+        transition: all 0.3s ease;
+        width: 90%;
+        max-width: 280px;
+        letter-spacing: 0.5px;
+    }
+
+    button.primary-btn:active {
+        transform: scale(0.92);
+        box-shadow: 0 5px 15px rgba(255, 8, 68, 0.3);
+    }
+
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        width: 100%;
+        position: relative;
+        min-height: 140px;
+    }
+
+    #yesBtn {
+        background: linear-gradient(135deg, #ff0844, #ff7eb3);
+        animation: pulseButton 2s infinite;
+        z-index: 2;
+    }
+
+    @keyframes pulseButton {
+        0% { transform: scale(1); box-shadow: 0 10px 25px rgba(255, 8, 68, 0.4); }
+        50% { transform: scale(1.05); box-shadow: 0 15px 35px rgba(255, 8, 68, 0.6); }
+        100% { transform: scale(1); box-shadow: 0 10px 25px rgba(255, 8, 68, 0.4); }
+    }
+
+    #noBtn {
+        background: #f1f5f9;
+        color: #64748b;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        font-size: 1.1rem;
+        padding: 14px 30px;
+        width: auto;
+        position: absolute;
+        bottom: 0;
+        transition: transform 0.15s ease-out;
+    }
+
+    .progress-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 25px;
+        position: absolute;
+        bottom: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        transition: all 0.3s ease;
+    }
+
+    .dot.active {
+        background: #fff;
+        transform: scale(1.4);
+        box-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+
+    .celebration-item {
+        position: fixed;
+        pointer-events: none;
+        z-index: 999;
+        animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(-20vh) rotate(0deg) scale(0); opacity: 0; }
+        10% { opacity: 1; transform: translateY(-10vh) rotate(45deg) scale(1); }
+        90% { opacity: 1; }
+        100% { transform: translateY(100vh) rotate(360deg) scale(1.5); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<div class="bg-particles" id="bgParticles"></div>
+
+<div class="container" id="mainContainer">
+    <div id="slide1" class="slide active">
+        <div class="image-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExejFvNThwcDV0anhkY2IxeTFseHBsdjNxZDFzc2lrN2lxdTQ1eTFmdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ch67rqHED7Ue8mKupV/giphy.gif" alt="img">
+        </div>
+        <p>يا اغلى انسانه بقلبي <span class="highlight">فطومتي</span> رسالة من قلب يحبك اكثر من نفسه</p>
+        <button class="primary-btn" onclick="next(1)">افتحي الرسالة</button>
+    </div>
+
+    <div id="slide2" class="slide">
+        <div class="image-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2Q3YmRjYjZhYzFlN2RkM2RjNWZmZTVmYmMwYzJkNjE0YjUzZmIzYyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/L95W4wv8nnb9K/giphy.gif" alt="img">
+        </div>
+        <p>انا عارف اني غلطت بحقك وزعلتك وربي يشهد ان زعلك يكسرني</p>
+        <button class="primary-btn" onclick="next(2)">التالي</button>
+    </div>
+
+    <div id="slide3" class="slide">
+        <div class="image-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWVkNzQ4NWNlNDk4ODhkNzA5YTI3YmJkNzJhZTBlOGNjOWY2MmZmZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/OPU6wzx8JrHna/giphy.gif" alt="img">
+        </div>
+        <p>الوم نفسي الف مرة على ضيقتك ضحكتك هي دنيتي كلها</p>
+        <button class="primary-btn" onclick="next(3)">التالي</button>
+    </div>
+
+    <div id="slide4" class="slide">
+        <div class="image-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWY1NjZmYThmOGQ5ZmE5NjJlZDc3NjU2ZTFkMmUzZGYwN2Q5YThlMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/EvYHHSntaIl5m/giphy.gif" alt="img">
+        </div>
+        <p>انتي الروح اللي اتنفسها ونبض قلبي الدنيا بدونك تضيق فيني</p>
+        <button class="primary-btn" onclick="next(4)">التالي</button>
+    </div>
+
+    <div id="slide5" class="slide">
+        <div class="image-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWEwNTIyZDcwNWYzMzE4YzZlYWQ1MjBmOWQ5ZjRjMmQyYzBhZTA5YyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o7TKoWXm3okO1kgHC/giphy.gif" alt="img">
+        </div>
+        <p>عاتبيني واطلبي عيوني بس لا تخلين بخاطرك شي اوعدك اعوضك</p>
+        <button class="primary-btn" onclick="next(5)">التالي</button>
+    </div>
+
+    <div id="slide6" class="slide">
+        <div class="image-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWEzNWU2NTNmMWJlYWQ1NjJkNTg3NWNjM2E0MjNkOTRhZDY1ZWI0ZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/V4O5jwcxICxOjlAZ1L/giphy.gif" alt="img">
+        </div>
+        <p>عشان خاطري وعشان حبنا افتحي لي قلبك وسامحيني</p>
+        <button class="primary-btn" onclick="next(6)">التالي</button>
+    </div>
+
+    <div id="slide7" class="slide">
+        <div class="image-container">
+            <img src="https://gifdb.com/images/high/cute-stitch-gentle-in-love-face-djofvw0ejw1eoy0e.webp" alt="img">
+        </div>
+        <p style="font-size: 1.5rem; color: #ff0844;">ترضين عني وتسامحيني يا نبض قلبي</p>
+        <div class="btn-group">
+            <button class="primary-btn" id="yesBtn">ايوه مسامحتك يا عيوني</button>
+            <button class="primary-btn" id="noBtn">لا زعلانة</button>
+        </div>
+    </div>
+
+    <div id="slide8" class="slide">
+        <div class="image-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzA0OTVjZDdmODgxYmNjMTM2ZjFlYzJmZDJmMzk2MTI4MjlmYzM0ZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MDJ9IbxxvDUQM/giphy.gif" alt="img">
+        </div>
+        <p style="font-size: 1.6rem; color: #ff0844; line-height: 1.6;">
+            يا روحي انتي ودنيتي كلها<br>
+            الله لا يحرمني منك يا احلى <span class="highlight">فطوم</span> بالدنيا احبك
+        </p>
+    </div>
+
+    <div class="progress-dots" id="progressDots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+</div>
+
+<script>
+    const totalSlides = 8;
+
+    function initParticles() {
+        const bg = document.getElementById('bgParticles');
+        const particles = ['❤️', '✨', '💖', '🌸'];
+        for(let i=0; i<15; i++) {
+            let p = document.createElement('div');
+            p.className = 'particle';
+            p.innerText = particles[Math.floor(Math.random() * particles.length)];
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            p.style.animationDelay = (Math.random() * 5) + 's';
+            p.style.fontSize = (Math.random() * 15 + 10) + 'px';
+            bg.appendChild(p);
+        }
+    }
+    initParticles();
+
+    function next(current) {
+        let currentSlide = document.getElementById('slide' + current);
+        let nextSlide = document.getElementById('slide' + (current + 1));
+        
+        if(!nextSlide) return;
+        
+        let dots = document.querySelectorAll('.dot');
+        if(dots[current]) {
+            dots[current-1].classList.remove('active');
+            dots[current].classList.add('active');
+        }
+
+        if(current + 1 === totalSlides) {
+            document.getElementById('progressDots').style.display = 'none';
+        }
+        
+        currentSlide.style.opacity = '0';
+        currentSlide.style.transform = 'scale(0.9) translateY(-20px)';
+        
+        setTimeout(() => {
+            currentSlide.classList.remove('active');
+            currentSlide.style.display = 'none';
+            
+            nextSlide.style.display = 'flex';
+            void nextSlide.offsetWidth;
+            
+            nextSlide.classList.add('active');
+        }, 400);
+    }
+
+    const noBtn = document.getElementById('noBtn');
+
+    const moveBtn = (e) => {
+        if(e) e.preventDefault();
+        
+        const padding = 20;
+        const btnWidth = noBtn.offsetWidth;
+        const btnHeight = noBtn.offsetHeight;
+        
+        const maxX = window.innerWidth - btnWidth - padding;
+        const maxY = window.innerHeight - btnHeight - padding;
+        
+        const x = Math.max(padding, Math.random() * maxX);
+        const y = Math.max(padding, Math.random() * maxY);
+        
+        noBtn.style.position = 'fixed';
+        noBtn.style.transform = `translate(${x - noBtn.getBoundingClientRect().left}px, ${y - noBtn.getBoundingClientRect().top}px)`;
+        noBtn.style.bottom = 'auto';
+        noBtn.style.right = 'auto';
+    };
+
+    noBtn.addEventListener('mouseover', moveBtn);
+    noBtn.addEventListener('touchstart', moveBtn, {passive: false});
+    noBtn.addEventListener('click', moveBtn);
+
+    document.getElementById('yesBtn').addEventListener('click', () => {
+        next(7);
+        createCelebration();
+    });
+
+    function createCelebration() {
+        const elements = ['❤️', '💖', '✨', '🌸', '🥰'];
+        const colors = ['#ff0844', '#ffb199', '#ff7eb3', '#ffffff'];
+        
+        for(let i = 0; i < 80; i++) {
+            setTimeout(() => {
+                const el = document.createElement('div');
+                el.className = 'celebration-item';
+                
+                if (Math.random() > 0.5) {
+                    el.innerHTML = elements[Math.floor(Math.random() * elements.length)];
+                    el.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                } else {
+                    el.style.width = (Math.random() * 10 + 5) + 'px';
+                    el.style.height = el.style.width;
+                    el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                }
+
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(el);
+                
+                setTimeout(() => el.remove(), 5000);
+            }, i * 50);
+        }
+    }
+</script>
+</body>
+</html>
